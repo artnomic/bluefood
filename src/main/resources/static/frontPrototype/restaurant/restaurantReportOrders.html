@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/bf_systemStyle.css">
+    <title>BlueFood</title>
+</head>
+
+<body>
+    <header>
+        <div id="divSystemLogo">
+            <span id="spanAuxVerticalAlign"></span>
+            <a href="">
+                <img src="../images/bf_logotipoSistema.png" alt="Logo do Sistema" id="imgSystemLogo">
+            </a>
+        </div>
+        <div id="customerOrRestaurantLoged">
+            Olá ${restaurant.name}
+        </div>
+    </header>
+    <br><br>
+
+    <h1>Relatório de Pedidos</h1>
+    <fieldset>
+        <legend>Filtros</legend>
+        <label for="item">Item: </label><br>
+        <input type="text" name="item" id="item"><br><br>
+
+        <label for="firstDate">Inicio: </label><br>
+        <input type="date" name="firstDate" id="firstDate"><br><br>
+
+        <label for="lastDate">Fim: </label><br>
+        <input type="date" name="lastDate" id="lastDate"><br><br>
+
+        <input type="button" value="Buscar">
+    </fieldset>
+
+    <table>
+        <tr>
+            <th>Pedido</th>
+            <th>Nome</th>
+            <th>Endereço</th>
+            <th>Valor</th>
+        </tr>
+        <tr>
+            <td><input type="submit" value="#1234 - Hambúrguer"><br></td>
+            <td>Samuel</td>
+            <td>Rua dos Bobos, 0</td>
+            <td>R$ 55,00</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="#1234 - Hambúrguer"><br></td>
+            <td>Samuel</td>
+            <td>Rua dos Bobos, 0</td>
+            <td>R$ 55,00</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="#1234 - Hambúrguer"><br></td>
+            <td>Samuel</td>
+            <td>Rua dos Bobos, 0</td>
+            <td>R$ 55,00</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="#1234 - Hambúrguer"><br></td>
+            <td>Samuel</td>
+            <td>Rua dos Bobos, 0</td>
+            <td>R$ 55,00</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="#1234 - Hambúrguer"><br></td>
+            <td>Samuel</td>
+            <td>Rua dos Bobos, 0</td>
+            <td>R$ 55,00</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="#1234 - Hambúrguer"><br></td>
+            <td>Samuel</td>
+            <td>Rua dos Bobos, 0</td>
+            <td>R$ 55,00</td>
+        </tr>
+    </table>
+
+    <input type="button" value="Voltar" onclick="location.href='restaurantHome.html';">
+    <footer>
+    </footer>
+</body>
+
+</html>

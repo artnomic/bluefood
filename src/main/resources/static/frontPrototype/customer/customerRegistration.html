@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/bf_systemStyle.css">
+    <title>BlueFood</title>
+</head>
+
+<body>
+    <header>
+        <div id="divSystemLogo">
+            <span id="spanAuxVerticalAlign"></span>
+            <a href="">
+                <img src="../images/bf_logotipoSistema.png" alt="Logo do Sistema" id="imgSystemLogo">
+            </a>
+        </div>
+    </header>
+    <br><br>
+    <!-- Cabeçalho Fim -->
+
+    <div>
+        <h1>Cadastro de Cliente</h1>
+        <div id="sucessMessage">
+            sucess
+        </div>
+
+        <form action="" method="post">
+            <fieldset>
+                <label for="name">Nome: </label><br>
+                <input type="text" name="name" id="name" placeholder="Informe o seu Nome"><br><br>
+                <div id="errorMessage"> error </div>
+
+                <label for="cpf">CPF: </label><br>
+                <input type="text" name="cpf" id="cpf" placeholder="Informe o seu CPF" class="inputError"><br><br>
+
+                <label for="email">E-mail: </label><br>
+                <input type="text" name="email" id="email" placeholder="Informe o seu E-mail"><br><br>
+
+                <label for="phone">Celular: </label><br>
+                <input type="text" name="phone" id="phone" placeholder="Informe o seu Número de Celular"><br><br>
+
+                <label for="cep">CEP: </label><br>
+                <input type="text" name="cep" id="cep" placeholder="Informe o seu CEP"><br><br>
+
+                <label for="password">Senha: </label><br>
+                <input type="password" name="password" id="password" placeholder="Informe a sua Senha"><br><br>
+
+                <input type="button" value="Cadastrar" onclick="location.href='customerHome.html';">
+            </fieldset>
+        </form>
+        <br>
+        <input type="button" value="Voltar" onclick="location.href='../index.html';">
+    </div>
+
+    <footer>
+    </footer>
+</body>
+
+</html>

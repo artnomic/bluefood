@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/bf_systemStyle.css">
+    <title>BlueFood</title>
+</head>
+
+<body>
+    <header>
+        <div id="divSystemLogo">
+            <span id="spanAuxVerticalAlign"></span>
+            <a href="">
+                <img src="../images/bf_logotipoSistema.png" alt="Logo do Sistema" id="imgSystemLogo">
+            </a>
+        </div>
+        <div id="customerOrRestaurantLoged">
+            Olá ${restaurant.name}
+        </div>
+    </header>
+    <br><br>
+
+    <div>
+        <h1>Comidas</h1>
+        <div>
+            <span>Pizza de Calabresa</span><br>
+            <span>Massa fina, molho de tomate, queijo, calabresa e pimenta.</span><br>
+            <span>R$ 55,00</span><br>
+            <input type="button" value="Remover">
+        </div><br><br>
+        <div>
+            <span>Hambúrguer</span><br>
+            <span>Dois hambúrgueres, alface, queijo, molho especial, cebola e picles no pão com gergelim.</span><br>
+            <span>R$ 35,00</span><br>
+            <input type="button" value="Remover">
+        </div><br><br>
+
+        erros
+    </div><br><br>
+
+    <form action="" method="post">
+        <label for="newFood">Nova comida: </label><br>
+        <input type="text" name="newFood" id="newFood" placeholder="Informe o Nome do prato"><br><br>
+        <label for="descriptionFood">Descrição: </label><br>
+        <input type="text" name="descriptionFood" id="descriptionFood" placeholder="Informe a descrição do prato"><br><br>
+        <label for="priceFood">Preço: </label><br>
+        <input type="text" name="priceFood" id="priceFood" placeholder="Informe o preço do prato"><br><br>
+        <label for="foodCategoryRestaurant">Categoria: </label><br>
+        <input type="text" name="foodCategoryRestaurant" id="foodCategoryRestaurant" placeholder="Informe a categoria do prato"><br><br>
+        <label for="detach">Destaque: </label><br>
+        <input type="checkbox" name="detach" id="detach"><br><br>
+
+        <input type="button" value="Adicionar"><br><br>
+    </form>
+
+    <input type="button" value="Voltar" onclick="location.href='restaurantHome.html';">
+    <footer>
+    </footer>
+</body>
+
+</html>

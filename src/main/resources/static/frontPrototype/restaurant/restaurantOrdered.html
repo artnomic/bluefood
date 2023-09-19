@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/bf_systemStyle.css">
+    <title>BlueFood</title>
+</head>
+
+<body>
+    <header>
+        <div id="divSystemLogo">
+            <span id="spanAuxVerticalAlign"></span>
+            <a href="">
+                <img src="../images/bf_logotipoSistema.png" alt="Logo do Sistema" id="imgSystemLogo">
+            </a>
+        </div>
+        <div id="customerOrRestaurantLoged">
+            Olá ${restaurant.name}
+        </div>
+    </header>
+    <br><br>
+
+    <div>
+        <h1>PEDIDO</h1><br><br><br>
+
+        <input type="button" value="Mudar Status para 'Em Produção'"><br>
+        <input type="button" value="Mudar Status para 'Em Entrega'"><br>
+        <br><br>
+
+        <span>Nome do Cliente</span><br>
+        <span>Endereço do Cliente</span><br>
+
+
+        <div>
+            <span>Pizza Calabresa</span><br>
+            <span>Quantidade: 1</span><br>
+            <span>Observações: Pedido <b>NÃO</b> possui observações!</span><br>
+            <span>R$ 55,00</span><br>
+        </div><br><br>
+    
+        <div>
+            <span>Hamburguer</span><br>
+            <span>Quantidade: 3</span><br>
+            <span>Observações: Dois Hamburguer sem cebola</span><br>
+            <span>R$ 95,00</span><br>
+        </div><br><br>
+        
+        <div>
+            <span>Taxa de Entrega: </span><br>
+            <span>R$ 15,00 </span><br>
+        </div>
+    
+        <div>
+            <span>Total</span><br>
+            <span>R$ 165,00</span><br><br>
+        </div>
+
+    </div>
+
+    <input type="button" value="Voltar" onclick="location.href='restaurantHome.html';">
+    <footer>
+    </footer>
+</body>
+
+</html>

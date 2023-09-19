@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bf_systemStyle.css">
+    <title>BlueFood</title>
+</head>
+
+<body>
+    <header>
+        <div id="divSystemLogo">
+            <span id="spanAuxVerticalAlign"></span>
+            <a href="">
+                <img src="images/bf_logotipoSistema.png" alt="Logo do Sistema" id="imgSystemLogo">
+            </a>
+        </div>
+    </header>
+    <br><br>
+    <!-- Cabeçalho Fim -->
+    <div>
+        <img src="images/bf_iconeUsuario.png" alt="Icone genérico de usuário" id="imgUserIcon">
+        <h1>Autenticação</h1>
+        <form method="post" action="">
+            <fieldset>
+                <input type="text" name="email" placeholder="Informe o seu E-mail">
+                <input type="password" name="password" placeholder="Informe a sua senha">
+                <input type="button" value="Acessar" onclick="location.href='customer/customerHome.html';">
+            </fieldset>
+        </form>
+        <br>
+
+        <div id="errorMessage">
+            error
+        </div><br>
+
+        <input type="button" value="Criar conta de usuário" onclick="location.href='customer/customerRegistration.html';">
+        <br>
+        <input type="button" value="Criar conta de restaurante" onclick="location.href='restaurant/restaurantRegistration.html';">
+
+    </div>
+
+</body>
+
+</html>
