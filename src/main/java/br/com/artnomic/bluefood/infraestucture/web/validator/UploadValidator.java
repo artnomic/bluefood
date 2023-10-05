@@ -3,6 +3,9 @@ package br.com.artnomic.bluefood.infraestucture.web.validator;
 import br.com.artnomic.bluefood.util.FileType;
 import org.springframework.web.multipart.MultipartFile;
 
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import java.util.Arrays;
 import java.util.List;
 

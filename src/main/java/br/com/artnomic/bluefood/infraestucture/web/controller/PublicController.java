@@ -6,7 +6,7 @@ import br.com.artnomic.bluefood.application.service.exception.ValidationExceptio
 import br.com.artnomic.bluefood.domain.customer.Customer;
 import br.com.artnomic.bluefood.domain.restaurant.Restaurant;
 import br.com.artnomic.bluefood.domain.restaurant.RestaurantCategoryRepository;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

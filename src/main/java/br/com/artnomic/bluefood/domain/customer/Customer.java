@@ -4,7 +4,8 @@ import br.com.artnomic.bluefood.domain.user.User;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.constraints.NotBlank;
+
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
