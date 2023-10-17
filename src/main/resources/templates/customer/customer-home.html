@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<body>
+<div layout:fragment="content">
+    <div>
+        <h1>É hora da refeição!</h1>
+        <form method="post" action="">
+            <fieldset id="fieldsetFilters">
+                <input type="text" name="search" id="" placeholder="Quero comer...">
+                <input type="button" value="Vamos lá!">
+            </fieldset>
+        </form>
+    </div>
+
+    <div id="divFoodCategoryGeneral">
+        <div id="divFoodCategoryOption">
+            <a href="#">
+                <img src="../images/sys_categoriaChurrasco.png" alt="Categoria Churrasco" id="imgFoodCategory">
+                <br />
+                <span>Churrasco</span>
+            </a>
+        </div>
+        <div id="divFoodCategoryOption">
+            <a href="#">
+                <img src="../images/sys_categoriaHamburguer.png" alt="Categoria Hambúrguer" id="imgFoodCategory">
+                <br>
+                <span>Hambúrguer</span>
+            </a>
+        </div>
+        <div id="divFoodCategoryOption">
+            <a href="#">
+                <img src="../images/sys_categoriaPizza.png" alt="Categoria Pizza" id="imgFoodCategory">
+                <br />
+                <span>Pizza</span>
+            </a>
+        </div>
+        <div id="divFoodCategoryOption">
+            <a href="#">
+                <img src="../images/sys_categoriaSalada.png" alt="Categoria Salada" id="imgFoodCategory">
+                <br />
+                <span>Salada</span>
+            </a>
+        </div>
+        <div id="divFoodCategoryOption">
+            <a href="#">
+                <img src="../images/sys_categoriaSobremesa.png" alt="Categoria Sobremesa" id="imgFoodCategory">
+                <br />
+                <span>Sobremesa</span>
+            </a>
+        </div>
+    </div>
+
+<!--    <div>-->
+<!--        <h1>Cupons Disponíveis</h1>-->
+<!--        <input type="button" value="10% em Hambúrguer!"><br/>-->
+<!--        <input type="button" value="15% em Pizza!"><br/>-->
+<!--    </div>-->
+
+    <div>
+        <h1>Últimos pedidos</h1>
+        <input type="button" value="#1234 - Hambúrguer" onclick="location.href='customerOrdered.html';"><br/>
+        <input type="button" value="#1235 - Pizza" onclick="location.href='customerOrdered.html';"><br/>
+        <input type="button" value="#1236 - Japonês" onclick="location.href='customerOrdered.html';"><br/>
+        <input type="button" value="#1237 - Hambúrguer" onclick="location.href='customerOrdered.html';"><br/>
+    </div>
+
+    <div>
+        <h1>Conta</h1>
+        <input type="button" value="Meus Dados" th:onclick="'location.href=\'' + @{/customer/edit} + '\';'"><br/>
+        <input type="button" value="Sair" th:onclick="'location.href=\'' + @{/logout} + '\';'"><br/>
+    </div>
+</div>
+</body>
+
+</html>
