@@ -2,10 +2,7 @@ package br.com.artnomic.bluefood.application.test;
 
 import br.com.artnomic.bluefood.domain.customer.Customer;
 import br.com.artnomic.bluefood.domain.customer.CustomerRepository;
-import br.com.artnomic.bluefood.domain.restaurant.Restaurant;
-import br.com.artnomic.bluefood.domain.restaurant.RestaurantCategory;
-import br.com.artnomic.bluefood.domain.restaurant.RestaurantCategoryRepository;
-import br.com.artnomic.bluefood.domain.restaurant.RestaurantRepository;
+import br.com.artnomic.bluefood.domain.restaurant.*;
 import br.com.artnomic.bluefood.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -28,10 +25,14 @@ public class InsertDataForTesting {
     @Autowired
     private RestaurantCategoryRepository restaurantCategoryRepository;
 
+    @Autowired
+    private MenuItemRepository menuItemRepository;
+
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event) {
         customers();
         Restaurant[] restaurants = restaurants();
+        menuItems(restaurants);
     }
 
     private Restaurant[] restaurants() {
@@ -141,5 +142,77 @@ public class InsertDataForTesting {
 
         Customer[] array = new Customer[customers.size()];
         return customers.toArray(array);
+    }
+
+    private void menuItems(Restaurant[] restaurants) {
+        MenuItem mc = new MenuItem();
+        mc.setCategory("Sanduíche");
+        mc.setDescription("Delicioso sanduíche com molho");
+        mc.setName("Double Cheese Burger Special");
+        mc.setPrice(BigDecimal.valueOf(23.8));
+        mc.setRestaurant(restaurants[0]);
+        mc.setEmphasis(true);
+        mc.setImage("0001-comida.png");
+        menuItemRepository.save(mc);
+
+        mc = new MenuItem();
+        mc.setCategory("Sanduíche");
+        mc.setDescription("Sanduíche padrão que mata a fome");
+        mc.setName("Cheese Burger Simples");
+        mc.setPrice(BigDecimal.valueOf(17.8));
+        mc.setRestaurant(restaurants[0]);
+        mc.setEmphasis(false);
+        mc.setImage("0006-comida.png");
+        menuItemRepository.save(mc);
+
+        mc = new MenuItem();
+        mc.setCategory("Sanduíche");
+        mc.setDescription("Sanduíche natural com peito de peru");
+        mc.setName("Sanduíche Natural da Casa");
+        mc.setPrice(BigDecimal.valueOf(11.8));
+        mc.setRestaurant(restaurants[0]);
+        mc.setEmphasis(false);
+        mc.setImage("0007-comida.png");
+        menuItemRepository.save(mc);
+
+        mc = new MenuItem();
+        mc.setCategory("Bebida");
+        mc.setDescription("Refrigerante com gás");
+        mc.setName("Refrigerante Tradicional");
+        mc.setPrice(BigDecimal.valueOf(9));
+        mc.setRestaurant(restaurants[0]);
+        mc.setEmphasis(false);
+        mc.setImage("0004-comida.png");
+        menuItemRepository.save(mc);
+
+        mc = new MenuItem();
+        mc.setCategory("Bebida");
+        mc.setDescription("Suco natural e docinho");
+        mc.setName("Suco de Laranja");
+        mc.setPrice(BigDecimal.valueOf(9));
+        mc.setRestaurant(restaurants[0]);
+        mc.setEmphasis(false);
+        mc.setImage("0005-comida.png");
+        menuItemRepository.save(mc);
+
+        mc = new MenuItem();
+        mc.setCategory("Pizza");
+        mc.setDescription("Pizza saborosa com cebola");
+        mc.setName("Pizza de Calabresa");
+        mc.setPrice(BigDecimal.valueOf(38.9));
+        mc.setRestaurant(restaurants[3]);
+        mc.setEmphasis(false);
+        mc.setImage("0002-comida.png");
+        menuItemRepository.save(mc);
+
+        mc = new MenuItem();
+        mc.setCategory("Japonesa");
+        mc.setDescription("Delicioso Uramaki tradicional");
+        mc.setName("Uramaki");
+        mc.setPrice(BigDecimal.valueOf(16.8));
+        mc.setRestaurant(restaurants[4]);
+        mc.setEmphasis(false);
+        mc.setImage("0003-comida.png");
+        menuItemRepository.save(mc);
     }
 }

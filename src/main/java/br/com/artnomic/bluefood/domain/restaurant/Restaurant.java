@@ -53,6 +53,9 @@ public class Restaurant extends User {
     @ToString.Exclude
     private Set<RestaurantCategory> categories = new HashSet<>(0);
 
+    @OneToMany(mappedBy = "restaurant")
+    private Set<MenuItem>  menuItems = new HashSet<>(0);
+
     public void setLogotypeFileName() {
         if(getId() == null) {
             throw new IllegalStateException("É preciso primeiro gravar o registro");
