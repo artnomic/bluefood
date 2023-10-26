@@ -4,8 +4,11 @@ import br.com.artnomic.bluefood.application.service.CustomerService;
 import br.com.artnomic.bluefood.application.service.exception.ValidationException;
 import br.com.artnomic.bluefood.domain.customer.Customer;
 import br.com.artnomic.bluefood.domain.customer.CustomerRepository;
+import br.com.artnomic.bluefood.domain.restaurant.RestaurantCategory;
+import br.com.artnomic.bluefood.domain.restaurant.RestaurantCategoryRepository;
 import br.com.artnomic.bluefood.util.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping(path = "/customer")
@@ -24,10 +28,16 @@ public class CustomerController {
     private CustomerRepository customerRepository;
 
     @Autowired
+    private RestaurantCategoryRepository restaurantCategoryRepository;
+
+    @Autowired
     private CustomerService customerService;
 
     @GetMapping(path = "/home")
-    public String home() {
+    public String home(Model model) {
+        List<RestaurantCategory> categories = restaurantCategoryRepository.findAll(Sort.by("name"));
+        model.addAttribute("categories", categories);
+
         return "customer/customer-home";
     }
 

@@ -12,42 +12,14 @@
                 <input type="button" value="Vamos lá!">
             </fieldset>
         </form>
-    </div>
+    </div><br />
 
     <div id="divFoodCategoryGeneral">
-        <div id="divFoodCategoryOption">
+        <div id="divFoodCategoryOption" th:each="category : ${categories}">
             <a href="#">
-                <img src="../images/sys_categoriaChurrasco.png" alt="Categoria Churrasco" id="imgFoodCategory">
+                <img th:src="@{/images/category/} + ${category.image}" id="imgFoodCategory">
                 <br />
-                <span>Churrasco</span>
-            </a>
-        </div>
-        <div id="divFoodCategoryOption">
-            <a href="#">
-                <img src="../images/sys_categoriaHamburguer.png" alt="Categoria Hambúrguer" id="imgFoodCategory">
-                <br>
-                <span>Hambúrguer</span>
-            </a>
-        </div>
-        <div id="divFoodCategoryOption">
-            <a href="#">
-                <img src="../images/sys_categoriaPizza.png" alt="Categoria Pizza" id="imgFoodCategory">
-                <br />
-                <span>Pizza</span>
-            </a>
-        </div>
-        <div id="divFoodCategoryOption">
-            <a href="#">
-                <img src="../images/sys_categoriaSalada.png" alt="Categoria Salada" id="imgFoodCategory">
-                <br />
-                <span>Salada</span>
-            </a>
-        </div>
-        <div id="divFoodCategoryOption">
-            <a href="#">
-                <img src="../images/sys_categoriaSobremesa.png" alt="Categoria Sobremesa" id="imgFoodCategory">
-                <br />
-                <span>Sobremesa</span>
+                <span th:text="${category.name}"></span>
             </a>
         </div>
     </div>
