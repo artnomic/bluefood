@@ -16,12 +16,14 @@
 <header>
     <div id="divSystemLogo">
         <span id="spanAuxVerticalAlign"></span>
-        <a href="">
+        <a th:href="${link} == null ? @{/} : ${link}">
             <img th:src="@{/images/bf_logotipoSistema.png}" alt="Logo do Sistema" id="imgSystemLogo" />
         </a>
     </div>
 </header>
-<br><br>
+<div id="customerOrRestaurantLoged" th:if="${#authentication.principal != 'anonymousUser'}">
+    <span th:text="'Olá, ' + ${#authentication.principal.user.name} + '!'"></span>
+</div><br/><br/>
 <!-- Cabeçalho - Fim -->
 <!-- Conteúdo -->
 <div layout:fragment="content"></div>

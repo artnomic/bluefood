@@ -1,11 +1,14 @@
 package br.com.artnomic.bluefood.infraestucture.web.controller;
 
 import br.com.artnomic.bluefood.application.service.CustomerService;
+import br.com.artnomic.bluefood.application.service.RestaurantService;
 import br.com.artnomic.bluefood.application.service.exception.ValidationException;
 import br.com.artnomic.bluefood.domain.customer.Customer;
 import br.com.artnomic.bluefood.domain.customer.CustomerRepository;
+import br.com.artnomic.bluefood.domain.restaurant.Restaurant;
 import br.com.artnomic.bluefood.domain.restaurant.RestaurantCategory;
 import br.com.artnomic.bluefood.domain.restaurant.RestaurantCategoryRepository;
+import br.com.artnomic.bluefood.domain.restaurant.SearchFilter;
 import br.com.artnomic.bluefood.util.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -31,12 +34,16 @@ public class CustomerController {
     private RestaurantCategoryRepository restaurantCategoryRepository;
 
     @Autowired
-    private CustomerService customerService;
+    private CustomerService
+            customerService;
+    @Autowired
+    private RestaurantService restaurantService;
 
     @GetMapping(path = "/home")
     public String home(Model model) {
         List<RestaurantCategory> categories = restaurantCategoryRepository.findAll(Sort.by("name"));
         model.addAttribute("categories", categories);
+        model.addAttribute("searchFilter", new SearchFilter());
 
         return "customer/customer-home";
     }
@@ -69,5 +76,18 @@ public class CustomerController {
 
         ControllerHelper.setEditMode(model, true);
         return "customer/customer-registration";
+    }
+
+    @GetMapping(path = "/search")
+    public String search(@ModelAttribute("searchFilter") SearchFilter filter,
+                         Model model) {
+
+        List<Restaurant> restaurants = restaurantService.search(filter);
+        model.addAttribute("restaurants", restaurants);
+
+        ControllerHelper.addCategoriesToRequest(restaurantCategoryRepository, model);
+        model.addAttribute("searchFilter", new SearchFilter());
+
+        return "customer/customer-search";
     }
 }

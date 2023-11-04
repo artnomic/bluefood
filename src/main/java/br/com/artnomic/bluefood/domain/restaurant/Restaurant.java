@@ -5,6 +5,8 @@ import br.com.artnomic.bluefood.infraestucture.web.validator.UploadConstraint;
 import br.com.artnomic.bluefood.util.FileType;
 import javax.persistence.*;
 import javax.validation.constraints.*;
+
+import br.com.artnomic.bluefood.util.StringUtils;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Getter
@@ -43,7 +46,7 @@ public class Restaurant extends User {
     @Max(120)
     private Integer timeDeliveryDefault;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "restaurant_has_category",
             joinColumns = @JoinColumn(name = "restaurant_id"),
@@ -62,5 +65,14 @@ public class Restaurant extends User {
         }
 
         this.logotype = String.format("%04d-logo.%s", getId(), FileType.of(logotypeFile.getContentType()).getExtension());
+    }
+
+    public String getCategoryAsText() {
+        Set<String> strings = new LinkedHashSet<>();
+        for (RestaurantCategory category:categories) {
+            strings.add(category.getName());
+        }
+
+        return StringUtils.concatenate(strings);
     }
 }

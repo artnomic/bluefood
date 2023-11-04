@@ -5,9 +5,12 @@ import br.com.artnomic.bluefood.domain.customer.Customer;
 import br.com.artnomic.bluefood.domain.customer.CustomerRepository;
 import br.com.artnomic.bluefood.domain.restaurant.Restaurant;
 import br.com.artnomic.bluefood.domain.restaurant.RestaurantRepository;
+import br.com.artnomic.bluefood.domain.restaurant.SearchFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class RestaurantService {
@@ -56,5 +59,10 @@ public class RestaurantService {
         }
 
         return true;
+    }
+
+    public List<Restaurant> search(SearchFilter filter) {
+        //TODO: Critérios de filtragem
+        return restaurantRepository.findAll();
     }
 }

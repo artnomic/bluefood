@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html
         xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+        xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}" th:with="link=@{/customer/home/}">
 <body>
 <div layout:fragment="content">
     <div>
         <h1>É hora da refeição!</h1>
-        <form method="post" action="">
+        <form method="get" th:object="${searchFilter}" th:action="@{/customer/search}">
             <fieldset id="fieldsetFilters">
-                <input type="text" name="search" id="" placeholder="Quero comer...">
-                <input type="button" value="Vamos lá!">
+                <input type="text" th:fiel="*{text}" placeholder="Quero comer...">
+                <input type="submit" value="Vamos lá!">
             </fieldset>
         </form>
     </div><br />

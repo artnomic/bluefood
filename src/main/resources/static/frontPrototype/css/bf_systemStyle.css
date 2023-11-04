@@ -157,7 +157,10 @@ div#divFoodCategoryOption {
     height: 130px;
     background-color: #fff;
 }
+div#divRestaurantGeneral
+{
 
+}
 div#divFoodCategoryGeneral {
     overflow: hidden;
     display: flex;
