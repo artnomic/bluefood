@@ -81,12 +81,15 @@ public class CustomerController {
     @GetMapping(path = "/search")
     public String search(@ModelAttribute("searchFilter") SearchFilter filter,
                          Model model) {
+        filter.processFilter();
 
         List<Restaurant> restaurants = restaurantService.search(filter);
         model.addAttribute("restaurants", restaurants);
 
         ControllerHelper.addCategoriesToRequest(restaurantCategoryRepository, model);
-        model.addAttribute("searchFilter", new SearchFilter());
+        model.addAttribute("searchFilter", filter);
+
+
 
         return "customer/customer-search";
     }

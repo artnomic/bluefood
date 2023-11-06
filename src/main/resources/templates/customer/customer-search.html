@@ -4,25 +4,28 @@
         xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}" th:with="link=@{/customer/home/}">
 <body>
 <div layout:fragment="content">
+    <form id="form" method="get" th:object="${searchFilter}" th:action="@{/customer/search}">
+        <input id="searchType" type="hidden" th:field="*{searchType}">
+        <input id="categoryId" type="hidden" th:field="*{categoryId}">
         <div>
             <h1>É hora da refeição!</h1>
-            <form method="post" action="">
-                <fieldset id="fieldsetFilters">
-                    <input type="text" name="search" id="" placeholder="Quero comer...">
-                    <input type="button" value="Vamos lá!">
-                </fieldset>
-            </form>
-        </div><br />
-
-    <div id="divFoodCategoryGeneral">
-        <div id="divFoodCategoryOption" th:each="category : ${categories}">
-            <a href="#">
-                <img th:src="@{/images/category/} + ${category.image}" id="imgFoodCategory">
-                <br />
-                <span th:text="${category.name}"></span>
-            </a>
+            <fieldset id="fieldsetFilters">
+                <input type="text" th:field="*{text}" placeholder="Quero comer...">
+                <input type="button" value="Vamos lá!" onclick="searchRest(null);">
+            </fieldset>
         </div>
-    </div>
+        <br/>
+
+        <div id="divFoodCategoryGeneral">
+            <div id="divFoodCategoryOption" th:each="category : ${categories}">
+                <a href="#" th:onclick="'searchRest(' + ${category.id} + ');'">
+                    <img th:src="@{/images/category/} + ${category.image}" id="imgFoodCategory">
+                    <br/>
+                    <span th:text="${category.name}"></span>
+                </a>
+            </div>
+        </div>
+    </form>
 
     <div>
             <h1>Resultados</h1>
@@ -47,8 +50,11 @@
                 </a>
                 <br />
             </div>
-
         </div>
+
+    <div th:if="${restaurants.size() == 0}">
+        <div id="errorMessage"><span>Nenhum restaurante encontrado!</span></div><br>
+    </div>
 
     <input type="button" value="Voltar" th:onclick="'location.href=\'' + @{/customer/home} + '\';'">
     </div>

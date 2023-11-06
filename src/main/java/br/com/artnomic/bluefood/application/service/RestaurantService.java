@@ -6,6 +6,7 @@ import br.com.artnomic.bluefood.domain.customer.CustomerRepository;
 import br.com.artnomic.bluefood.domain.restaurant.Restaurant;
 import br.com.artnomic.bluefood.domain.restaurant.RestaurantRepository;
 import br.com.artnomic.bluefood.domain.restaurant.SearchFilter;
+import br.com.artnomic.bluefood.domain.restaurant.SearchFilter.SearchType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +27,7 @@ public class RestaurantService {
     @Transactional
     public void saveRestaurant(Restaurant restaurant) throws ValidationException {
 
-        if(!validateEmail(restaurant.getEmail(), restaurant.getId())) {
+        if (!validateEmail(restaurant.getEmail(), restaurant.getId())) {
             throw new ValidationException("O e-mail já cadastrado.");
         }
 
@@ -47,13 +48,13 @@ public class RestaurantService {
         Customer customer = customerRepository.findByEmail(email);
         Restaurant restaurant = restaurantRepository.findByEmail(email);
 
-        if(customer != null) return false;
+        if (customer != null) return false;
 
-        if(restaurant != null) {
+        if (restaurant != null) {
             if (id == null) {
                 return false;
             }
-            if(!restaurant.getId().equals(id)) {
+            if (!restaurant.getId().equals(id)) {
                 return false;
             }
         }
@@ -62,7 +63,16 @@ public class RestaurantService {
     }
 
     public List<Restaurant> search(SearchFilter filter) {
-        //TODO: Critérios de filtragem
-        return restaurantRepository.findAll();
+        List<Restaurant> restaurants;
+
+        if (filter.getSearchType() == SearchType.Text) {
+            restaurants = restaurantRepository.findByNameIgnoreCaseContaining(filter.getText());
+        } else if (filter.getSearchType() == SearchType.Category) {
+            restaurants = restaurantRepository.findByCategories_Id(filter.getCategoryId());
+        } else {
+            throw new IllegalStateException("O tipo de busca " + filter.getSearchType() + " não é suportado");
+        }
+
+        return restaurants;
     }
 }
